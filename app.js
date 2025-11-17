@@ -18,7 +18,7 @@ app.use(myConnection(mysql, {
 }, 'single')); // 'single' es recomendable para conexiones únicas
 
 // Rutas
-app.get('/', (req, res) => res.send('Bienvenido a Home sweet home treat'));
+app.get('/', (req, res) => res.send('Bienvenido a la nueva actualizacion'));
 
 // Levantar el servidor
 const PORT = 8085;
