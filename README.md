@@ -29,3 +29,11 @@ Si arroja error, las razones son el usuario o contraseña o nombre de la BD que 
 
 NOTA: ctrl-C para detener el servidor
 5. Uso del .gitignore 
+
+6. Installar
+
+npm install body-parser cors
+
+npm install nodemon --save-dev
+
+npm install ejs

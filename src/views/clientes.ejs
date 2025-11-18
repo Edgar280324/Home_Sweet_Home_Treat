@@ -1,0 +1,109 @@
+<%- include("partials/header", { titulo: "Gestión de Clientes" }) %>
+
+<h2 class="text-center mb-4">Gestión de Clientes</h2>
+
+<!-- Botón para abrir modal -->
+<div class="text-end mb-3">
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">Nuevo Cliente</button>
+</div>
+
+<!-- Tabla -->
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(cliente => { %>
+        <tr>
+            <td><%= cliente.cliente_id %></td>
+            <td><%= cliente.nombre %></td>
+            <td><%= cliente.correo %></td>
+            <td><%= cliente.telefono %></td>
+            <td>
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" 
+                        data-bs-target="#modalEditar"
+                        data-id="<%= cliente.cliente_id %>"
+                        data-nombre="<%= cliente.nombre %>"
+                        data-correo="<%= cliente.correo %>"
+                        data-telefono="<%= cliente.telefono %>">Editar</button>
+
+                <form action="/clientes/eliminar" method="POST" style="display:inline;">
+                    <input type="hidden" name="cliente_id" value="<%= cliente.cliente_id %>">
+                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+</div>
+
+<!-- MODAL AGREGAR -->
+<div class="modal fade" id="modalAgregar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="/clientes/guardar" method="POST">
+            <div class="modal-body">
+                <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                <input type="email" name="correo" class="form-control mb-2" placeholder="Correo" required>
+                <input type="text" name="telefono" class="form-control mb-2" placeholder="Teléfono" maxlength="10">
+                <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" required>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL EDITAR -->
+<div class="modal fade" id="modalEditar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/clientes/actualizar" method="POST">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="cliente_id" id="editId">
+                <input type="text" name="nombre" id="editNombre" class="form-control mb-2" required>
+                <input type="email" name="correo" id="editCorreo" class="form-control mb-2" required>
+                <input type="text" name="telefono" id="editTelefono" class="form-control mb-2" maxlength="10">
+                <input type="password" name="contrasena" class="form-control mb-2" placeholder="Nueva contraseña (opcional)">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning">Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// llenar modal editar automáticamente
+const modalEditar = document.getElementById('modalEditar');
+modalEditar.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+
+    document.getElementById('editId').value = button.getAttribute('data-id');
+    document.getElementById('editNombre').value = button.getAttribute('data-nombre');
+    document.getElementById('editCorreo').value = button.getAttribute('data-correo');
+    document.getElementById('editTelefono').value = button.getAttribute('data-telefono');
+});
+</script>
+
+<%- include("partials/footer") %>
