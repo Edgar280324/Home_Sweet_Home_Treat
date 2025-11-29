@@ -1,0 +1,38 @@
+body {
+    background: #f7f7f7;
+}
+
+h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+.table th {
+    text-transform: uppercase;
+}
+
+.img-tabla {
+    width: 100px;     
+    height: 100px;   
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.link-categoria {
+    color: #821aa2; 
+    text-decoration: none;
+}
+
+.link-categoria:hover {
+    text-decoration: underline;
+}

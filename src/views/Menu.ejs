@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+<script>
+    // Guardamos las pestañas abiertas
+    const openedTabs = [];
+
+    // Función para abrir pestañas
+    function openTab(url) {
+        const tab = window.open(url, "_blank");
+        openedTabs.push(tab);
+    }
+
+    // Función para cerrar todo y redirigir al login
+    function logout() {
+        // Cerrar solo las pestañas que el sitio abrió
+        openedTabs.forEach(tab => {
+            if (tab && !tab.closed) {
+                tab.close();
+            }
+        });
+
+        // Redirigir a login en la pestaña actual
+        window.location.href = "/login";
+    }
+</script>
+<body>
+
+    
+<main ontouchstart>
+    <h2 class="titulo-menu">Panel de Navegación</h2>
+    <nav class="tab-link">
+        <a href="#" onclick="openTab('/clientes')">Clientes</a>
+        <a href="#" onclick="openTab('/categorias')">Categorias</a>
+        <a href="#" onclick="openTab('/productos')">Productos</a>
+        <a href="#" onclick="openTab('/productos')">Carrito</a>
+        <a href="#" onclick="logout()">Salir</a>
+        <hr/>
+    </nav>
+</main>
+
+
+    
+</body>
+</html>

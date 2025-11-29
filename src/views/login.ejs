@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+
+
+<body>
+<div class="wrapper">
+  <div class="title-text">
+    <div class="title login">Inciar Sesion</div>
+    <div class="title signup">Crear Cuenta</div>
+  </div>
+
+
+
+  <div class="form-container">
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" checked>
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login">Entrar</label>
+      <label for="signup" class="slide signup">Crear Cuenta</label>
+      <div class="slider-tab"></div>
+    </div>
+
+    <!-- Mensaje de error debajo del título LOGIN -->
+<% if (error) { %>
+  <div class="error-msg"><%= error %></div>
+<% } %>
+
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="success-msg"><%= success %></div>
+<% } %>
+<div class="form-inner">
+
+  <!-- LOGIN /login/login -->
+  <form action="/login/login" method="POST" class="login">
+      <div class="field">
+        <input 
+          type="text" 
+          name="telefono"
+          placeholder="Teléfono (10 dígitos)" 
+          required 
+          maxlength="10" 
+          pattern="[0-9]{10}"
+        >
+      </div>
+
+      <div class="field">
+        <input 
+          type="password" 
+          name="contrasena"
+          placeholder="Password" 
+          required>
+      </div>
+
+      
+
+      <div class="field btn">
+        <div class="btn-layer"></div>
+        <input type="submit" value="Entrar">
+      </div>
+
+      <div class="signup-link">No eres un miembro? 
+        <a href="#signup">Crea tu cuenta ahora!</a>
+      </div>
+  </form>
+
+
+
+
+<!-- SIGNUP -->
+<form action="/login/signup" method="POST" class="signup">
+
+  <!-- Nombre -->
+  <div class="field">
+    <input 
+      type="text" 
+      name="nombre"
+      placeholder="Nombre completo" 
+      required
+    >
+  </div>
+
+  <!-- Correo -->
+  <div class="field">
+    <input 
+      type="email" 
+      name="correo"
+      placeholder="Correo electrónico" 
+      required
+    >
+  </div>
+
+  <!-- Teléfono -->
+  <div class="field">
+    <input 
+      type="text" 
+      name="telefono"
+      placeholder="Teléfono (10 dígitos)" 
+      required 
+      maxlength="10" 
+      pattern="[0-9]{10}"
+    >
+  </div>
+
+  <!-- Contraseña -->
+  <div class="field">
+    <input 
+      type="password" 
+      name="contrasena"
+      placeholder="Password" 
+      required
+    >
+  </div>
+
+  <!-- Botón Signup -->
+  <div class="field btn">
+    <div class="btn-layer"></div>
+    <input type="submit" value="Crear">
+  </div>
+
+</form>
+
+    </div>
+  </div>
+</div>
+
+<script src="/js/loginA.js"></script> 
+</body>
+</html>
