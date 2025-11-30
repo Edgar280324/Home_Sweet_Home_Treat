@@ -2,30 +2,16 @@ const express = require('express');
 const router = express.Router();
 const productosController = require('../controllers/productosController');
 
-// Para manejar imágenes
-const multer = require('multer');
-const path = require('path');
+// Listar productos
+router.get('/', productosController.listar);
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, "src/public/imagenes");
-    },
-    filename: function(req, file, cb){
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
+// Guardar producto
+router.post('/guardar', productosController.guardar);
 
-const upload = multer({ storage });
+// Actualizar producto
+router.post('/actualizar', productosController.actualizar);
 
-// -------------------------------------------------------------
-// Mostrar categorías con productos
-// -------------------------------------------------------------
-router.get('/', productosController.listarProductos);
-
-// -------------------------------------------------------------
-// Agregar producto a una categoría
-// -------------------------------------------------------------
-router.post('/', upload.single('imagen'), productosController.crearProducto);
+// Eliminar producto
+router.post('/eliminar', productosController.eliminar);
 
 module.exports = router;
-

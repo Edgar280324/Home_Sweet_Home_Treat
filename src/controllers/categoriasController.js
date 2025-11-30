@@ -12,7 +12,7 @@ module.exports = {
                 SELECT 
                     tipo_id, 
                     nombre_tipo AS categoria, 
-                    imagen, 
+                    ruta_imagen AS imagen, 
                     descripcion 
                 FROM Tipo_Postre
             `;

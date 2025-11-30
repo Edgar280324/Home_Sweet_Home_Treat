@@ -11,21 +11,34 @@ npm install nodemon --save-dev
 
 npm install ejs
 
+npm install multer
 
-2. Insertar la base de datos en MYsql Monitor 
+2. Insertar imagenes
+
+Donde se requiera ingresar imagenes se tiene que colocar con el siguiente formato:
+
+nombre_de_la_imagen.jpg
+Hay una lista de imagenes con una cantidad unica:
+
+pastel1.jpg hasta pastel10.jpg
+Cupcake1.jpg hasta Cupcake10.jpg
+Tarta1.jpg hasta Tarta10.jpg
+
+
+3. Insertar la base de datos en MYsql Monitor 
 
 
 \R \d>
 \. ruta_del_sql
 
-3. Tabla categorias. 
+4. Tabla categorias. 
 
 ¿Como insertar imagenes al agregar una categoria?
 -- Inserte el nombre de la imagen.jpg.
 La lista de imagenes que se encuentran son: 
 
 
-3. Errores comunes de la base de datos. 
+5. Errores comunes de la base de datos. 
 
 Si eliminamos la base de datos, el usuario que hayamos creado no se eliminara, y esto provocara que al insertar una nueva BD con el mismo usuario que creamos arrojara error. Para ello eliminaremos el usuario con lo siguiente:
 
@@ -35,7 +48,7 @@ DROP USER 'homesweethometreat'@'localhost';
 
 FLUSH PRIVILEGES;
 
-4. Ejecutando el servidor local a traves de node.js
+6. Ejecutando el servidor local a traves de node.js
 
 Verificar el codigo correctamente en app.js. Una vez realizado lo anterior ingresar en consola
 

@@ -1,3 +1,4 @@
+
 CREATE DATABASE home_sweet_home_treat_bd;
 USE home_sweet_home_treat_bd;
 
@@ -24,6 +25,7 @@ CREATE TABLE Carrito (
     cliente_id INT UNIQUE,
     fecha_creacion DATETIME DEFAULT NOW(),
     FOREIGN KEY (cliente_id) REFERENCES Cliente(cliente_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -43,6 +45,7 @@ CREATE TABLE Postres (
     ruta_imagen VARCHAR(255), 
     descripcion TEXT,
     FOREIGN KEY (tipo_id) REFERENCES Tipo_Postre(tipo_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -51,6 +54,7 @@ CREATE TABLE Postre_Precio (
     postre_id INT NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (postre_id) REFERENCES Postres(postre_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -61,8 +65,10 @@ CREATE TABLE CarritoProducto (
     cantidad INT DEFAULT 1,
     personalizacion TEXT,
     precio_final DECIMAL(10,2),
-    FOREIGN KEY (carrito_id) REFERENCES Carrito(carrito_id),
+    FOREIGN KEY (carrito_id) REFERENCES Carrito(carrito_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (postre_id) REFERENCES Postres(postre_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -72,6 +78,7 @@ CREATE TABLE Ventas (
     fecha DATETIME DEFAULT NOW(),
     total DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (cliente_id) REFERENCES Cliente(cliente_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -82,9 +89,12 @@ CREATE TABLE Detalle_Venta (
     precio_unitario DECIMAL(10,2) NOT NULL,
     cantidad INT NOT NULL,
     subtotal DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (venta_id) REFERENCES Ventas(venta_id),
+    FOREIGN KEY (venta_id) REFERENCES Ventas(venta_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (postre_id) REFERENCES Postres(postre_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 
 INSERT INTO Tipo_Postre (tipo_id, nombre_tipo, descripcion, ruta_imagen)
 VALUES
@@ -92,27 +102,3 @@ VALUES
 (2, 'Cupcakes', 'Pequeños y elegantes pastelillos decorados con estilo y sabor exquisito.', 'cupcake1.jpg'),
 (3, 'Tartas', 'Postres refinados con bases crujientes y rellenos suaves que deleitan el paladar.', 'tarta1.jpg');
 
-
-
-
-DELIMITER $$
-
-CREATE TRIGGER trg_hash_cliente_insert
-BEFORE INSERT ON Cliente
-FOR EACH ROW
-BEGIN
-    IF NEW.contrasena IS NOT NULL THEN
-        SET NEW.contrasena = SHA2(NEW.contrasena, 256);
-    END IF;
-END $$
-
-CREATE TRIGGER trg_hash_cliente_update
-BEFORE UPDATE ON Cliente
-FOR EACH ROW
-BEGIN
-    IF NEW.contrasena <> OLD.contrasena THEN
-        SET NEW.contrasena = SHA2(NEW.contrasena, 256);
-    END IF;
-END $$
-
-DELIMITER ;
