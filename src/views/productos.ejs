@@ -3,201 +3,154 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
     <link rel="stylesheet" href="/css/producto.css" />
-    <title>Swanky Dropdown</title>
+    <title>Productos - Home Sweet Home Treat</title>
+
+    
+ 
+    <style>
+      /* Ajustes rápidos para que la tabla se vea bien al listar por categorías */
+      .tipo-card { margin-bottom: 30px; border: 1px solid #e6e6e6; padding: 16px; border-radius: 6px; }
+      .tipo-header { display:flex; align-items:center; justify-content:space-between; }
+      .tipo-img { width:60px; height:60px; background-size:cover; background-position:center; border-radius:6px; margin-right:12px; }
+      .producto-img { width:60px; height:60px; background-size:cover; background-position:center; border-radius:4px; }
+      .form-small input, .form-small textarea { width:100%; margin-bottom:8px; padding:6px; }
+      .form-inline { display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; }
+      .form-inline .field { flex:1; min-width:120px; }
+    </style>
 </head>
 <body>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-4">
+				<div class="col-md-8 text-center mb-4">
 					<h2 class="heading-section">Productos</h2>
+          <% if (mensaje) { %>
+            <div style="background:#e8f5e9;padding:8px;border:1px solid #c8e6c9;margin-bottom:12px;border-radius:4px;color:#256029;">
+              <%= mensaje %>
+            </div>
+          <% } %>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3 class="h5 mb-4 text-center">Table Accordion</h3>
-					<div class="table-wrap">
-						<table class="table">
-						  <thead class="thead-primary">
-						    <tr>
-						    	<th>&nbsp;</th>
-						    	<th>&nbsp;</th>
-						    	<th>Product</th>
-						      <th>Price</th>
-						      <th>Quantity</th>
-						      <th>total</th>
-						      <th>&nbsp;</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<label class="checkbox-wrap checkbox-primary">
-										  <input type="checkbox" checked>
-										  <span class="checkmark"></span>
-										</label>
-						    	</td>
-						    	<td>
-						    		<div class="img" style="background-image: url(images/product-1.png);"></div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Sneakers Shoes 2020 For Men </span>
-						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-						      	</div>
-						      </td>
-						      <td>$44.99</td>
-						      <td class="quantity">
-					        	<div class="input-group">
-				             	<input type="text" name="quantity" class="quantity form-control input-number" value="2" min="1" max="100">
-				          	</div>
-				          </td>
-				          <td>$89.98</td>
-						      <td>
-						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</button>
-				        	</td>
-						    </tr>
 
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<label class="checkbox-wrap checkbox-primary">
-										  <input type="checkbox">
-										  <span class="checkmark"></span>
-										</label>
-						    	</td>
-						    	<td>
-						    		<div class="img" style="background-image: url(images/product-2.png);"></div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Sneakers Shoes 2020 For Men </span>
-						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-						      	</div>
-						      </td>
-						      <td>$30.99</td>
-						      <td class="quantity">
-					        	<div class="input-group">
-				             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-				          	</div>
-				          </td>
-				          <td>$30.99</td>
-						      <td>
-						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</button>
-				        	</td>
-						    </tr>
+      <!-- Si no hay categorías -->
+      <% if (!tipos || tipos.length === 0) { %>
+        <div class="row">
+          <div class="col-md-12">
+            <p>No hay categorías (Tipo_Postre) en la base de datos.</p>
+          </div>
+        </div>
+      <% } %>
 
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<label class="checkbox-wrap checkbox-primary">
-										  <input type="checkbox">
-										  <span class="checkmark"></span>
-										</label>
-						    	</td>
-						    	<td>
-						    		<div class="img" style="background-image: url(images/product-3.png);"></div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Sneakers Shoes 2020 For Men </span>
-						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-						      	</div>
-						      </td>
-						      <td>$35.50</td>
-						      <td class="quantity">
-					        	<div class="input-group">
-				             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-				          	</div>
-				          </td>
-				          <td>$35.50</td>
-						      <td>
-						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</button>
-				        	</td>
-						    </tr>
+      <!-- Listado por categoría -->
+      <% tipos.forEach(function(tipo) { %>
+        <div class="row tipo-card">
+          <div class="col-12 tipo-header">
+            <div style="display:flex;align-items:center;">
+              <% if (tipo.ruta_imagen) { %>
+                <div class="tipo-img" style="background-image:url('<%= tipo.ruta_imagen %>')"></div>
+              <% } %>
+              <div>
+                <h3 style="margin:0;"><%= tipo.nombre_tipo %></h3>
+                <% if (tipo.descripcion) { %>
+                  <small><%= tipo.descripcion %></small>
+                <% } %>
+              </div>
+            </div>
+            <div>
+              <!-- Botón para mostrar/ocultar productos (simple) -->
+              <button onclick="var el=this.closest('.tipo-card').querySelector('.productos-wrap'); if(el.style.display==='none'){el.style.display='block'; this.innerText='Ocultar';}else{el.style.display='none'; this.innerText='Ver productos';}">Ver productos</button>
+            </div>
+          </div>
 
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<label class="checkbox-wrap checkbox-primary">
-										  <input type="checkbox">
-										  <span class="checkmark"></span>
-										</label>
-						    	</td>
-						    	<td>
-						    		<div class="img" style="background-image: url(images/product-4.png);"></div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Sneakers Shoes 2020 For Men </span>
-						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-						      	</div>
-						      </td>
-						      <td>$76.99</td>
-						      <td class="quantity">
-					        	<div class="input-group">
-				             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-				          	</div>
-				          </td>
-				          <td>$76.99</td>
-						      <td>
-						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</button>
-				        	</td>
-						    </tr>
+          <div class="col-12 productos-wrap" style="margin-top:12px;">
+            <div class="table-wrap">
+              <table class="table" style="width:100%;border-collapse:collapse;">
+                <thead>
+                  <tr style="background:#f7f7f7;">
+                    <th></th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (tipo.productos && tipo.productos.length>0) { %>
+                    <% tipo.productos.forEach(function(p) { %>
+                      <tr>
+                        <td>
+                          <% if (p.ruta_imagen) { %>
+                            <div class="producto-img" style="background-image:url('<%= p.ruta_imagen %>')"></div>
+                          <% } else { %>
+                            <div class="producto-img" style="background:#efefef;display:flex;align-items:center;justify-content:center;color:#999;">Sin foto</div>
+                          <% } %>
+                        </td>
+                        <td>
+                          <strong><%= p.nombre_postre %></strong>
+                        </td>
+                        <td>
+                          <% if (p.precio !== null) { %>
+                            $<%= Number(p.precio).toFixed(2) %>
+                          <% } else { %>
+                            --
+                          <% } %>
+                        </td>
+                        <td><%= p.stock %></td>
+                        <td style="max-width:320px;"><%= p.descripcion ? p.descripcion : '' %></td>
+                      </tr>
+                    <% }) %>
+                  <% } else { %>
+                    <tr><td colspan="5">No hay productos en esta categoría.</td></tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
 
-						    <tr class="alert" role="alert">
-						    	<td class="border-bottom-0">
-						    		<label class="checkbox-wrap checkbox-primary">
-										  <input type="checkbox">
-										  <span class="checkmark"></span>
-										</label>
-						    	</td>
-						    	<td class="border-bottom-0">
-						    		<div class="img" style="background-image: url(images/product-1.png);"></div>
-						    	</td>
-						      <td class="border-bottom-0">
-						      	<div class="email">
-						      		<span>Sneakers Shoes 2020 For Men </span>
-						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-						      	</div>
-						      </td>
-						      <td class="border-bottom-0">$40.00</td>
-						      <td class="quantity border-bottom-0">
-					        	<div class="input-group">
-				             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-				          	</div>
-				          </td>
-				          <td class="border-bottom-0">$40.00</td>
-						      <td class="border-bottom-0">
-						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</button>
-				        	</td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+            <!-- Formulario para agregar producto a esta categoría -->
+            <div style="margin-top:12px;border-top:1px dashed #ddd;padding-top:12px;">
+              <h4>Agregar producto a "<%= tipo.nombre_tipo %>"</h4>
+              <form action="/productos" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="tipo_id" value="<%= tipo.tipo_id %>">
+                <div class="form-inline">
+                  <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre_postre" required placeholder="Ej: Pastel de vainilla">
+                  </div>
+                  <div class="field">
+                    <label>Precio</label>
+                    <input type="number" name="precio" step="0.01" min="0" required placeholder="0.00">
+                  </div>
+                  <div class="field">
+                    <label>Stock</label>
+                    <input type="number" name="stock" min="0" value="0" placeholder="0">
+                  </div>
+                  <div class="field">
+                    <label>Imagen (opcional)</label>
+                    <input type="file" name="imagen" accept="image/*">
+                  </div>
+                  <div style="flex-basis:100%;"></div>
+                  <div class="field" style="flex:1;">
+                    <label>Descripción</label>
+                    <textarea name="descripcion" rows="2" placeholder="Descripción corta"></textarea>
+                  </div>
+                  <div style="align-self:flex-end;">
+                    <button type="submit">Agregar producto</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      <% }) %>
+
 		</div>
 	</section>
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-	<script src="/js/productosA.js"></script> 
 
+	<script src="/js/productosA.js"></script>
 </body>
 </html>

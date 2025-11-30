@@ -362,7 +362,7 @@ small,
 mark,
 .mark {
   padding: 0.2em;
-  background-color: #fcf8e3; }
+  background-color: #0a7f93; }
 
 .list-unstyled {
   padding-left: 0;
@@ -1351,7 +1351,7 @@ pre {
   padding: 0.3rem; }
 
 .table-bordered {
-  border: 1px solid #dee2e6; }
+  border: 1px solid #94c4f3; }
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #dee2e6; }
@@ -8196,7 +8196,7 @@ h1, h2, h3, h4, h5,
     padding: 30px;
     font-size: 13px;
     font-weight: 500;
-    color: white; }
+    color: dark; }
   .table tbody tr {
     margin-bottom: 10px; }
   .table tbody th, .table tbody td {
