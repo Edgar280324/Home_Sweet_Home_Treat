@@ -20,9 +20,9 @@ Donde se requiera ingresar imagenes se tiene que colocar con el siguiente format
 nombre_de_la_imagen.jpg
 Hay una lista de imagenes con una cantidad unica:
 
-pastel1.jpg hasta pastel10.jpg
-Cupcake1.jpg hasta Cupcake10.jpg
-Tarta1.jpg hasta Tarta10.jpg
+pastel1.jpg hasta pastel5.jpg
+cupcake1.jpg hasta cupcake5.jpg
+tarta1.jpg hasta tarta5.jpg
 
 
 3. Insertar la base de datos en MYsql Monitor 
