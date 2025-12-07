@@ -82,7 +82,7 @@ Coloque lo siguiente:
 USE home_sweet_home_treat_bd;
 SELECT * FROM cliente; 
 
-    ¡Excelente vacaciones, Inge! La verdad me resultó muy útil trabajar con Express y Node programar en esta herramienta es mucho más sencillo y rápido que usar WarmServer.
+    ¡Excelente vacaciones, Inge! La verdad me resultó muy útil trabajar con Express y Node programar en esta herramienta es mucho más sencillo y rápido.
 
 
 
