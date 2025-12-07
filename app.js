@@ -61,12 +61,10 @@ app.use('/Menu', MenuRoutes);
 
 
 
-// Ruta principal → Login
+
 app.get('/', (req, res) => res.redirect('/login'));
 
-// ----------------------
-// Iniciar servidor
-// ----------------------
+
 app.listen(app.get('port'), () => {
     console.log(`Servidor corriendo en http://localhost:${app.get('port')}`);
 });
