@@ -32,9 +32,7 @@ module.exports = {
         });
     },
 
-    // -----------------------------------------------------
-    // GUARDAR PRODUCTO + PRECIO
-    // -----------------------------------------------------
+
     guardar: (req, res) => {
         const { nombre_postre, tipo_id, ruta_imagen, stock, descripcion, precio } = req.body;
 
@@ -64,9 +62,7 @@ module.exports = {
         });
     },
 
-    // -----------------------------------------------------
-    // ACTUALIZAR PRODUCTO + PRECIO
-    // -----------------------------------------------------
+
     actualizar: (req, res) => {
         const { postre_id, nombre_postre, tipo_id, ruta_imagen, stock, descripcion, precio } = req.body;
 

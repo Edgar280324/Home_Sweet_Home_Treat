@@ -1,8 +1,5 @@
 module.exports = {
 
-    // ============================================================
-    // MOSTRAR CARRITO
-    // ============================================================
     mostrarCarrito: (req, res) => {
         const cliente_id = 1;
 
@@ -20,7 +17,7 @@ module.exports = {
                     SELECT carrito_id FROM Carrito WHERE cliente_id = ?
                 `, [cliente_id], (err, carritoData) => {
 
-                    // Si el carrito no existe → crearlo vacío
+                    // Si el carrito no existe 
                     if (carritoData.length === 0) {
                         conn.query(`
                             INSERT INTO Carrito (cliente_id) VALUES(?)
@@ -64,9 +61,6 @@ module.exports = {
         });
     },
 
-    // ============================================================
-    // AGREGAR AL CARRITO
-    // ============================================================
     agregarCarrito: (req, res) => {
         const cliente_id = 1;
         const { postre_id, cantidad } = req.body;
@@ -106,9 +100,6 @@ module.exports = {
         });
     },
 
-    // ============================================================
-    // ELIMINAR ITEM DEL CARRITO
-    // ============================================================
     eliminarItem: (req, res) => {
         const id = req.params.id;
 
@@ -142,9 +133,6 @@ module.exports = {
         });
     },
 
-    // ============================================================
-    // COMPRAR PRODUCTOS (vacía carrito sin regresar stock)
-    // ============================================================
     comprarProductos: (req, res) => {
         const cliente_id = 1;
 

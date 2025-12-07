@@ -1,8 +1,5 @@
 module.exports = {
 
-    // ---------------------------------------------
-    // Registrar usuario (SIGNUP)
-    // ---------------------------------------------
     signup: (req, res) => {
         const { nombre, correo, telefono, contrasena } = req.body;
 
@@ -29,9 +26,7 @@ module.exports = {
         });
     },
 
-    // ---------------------------------------------
-    // LOGIN
-    // ---------------------------------------------
+
     login: (req, res) => {
         const { telefono, contrasena } = req.body;
 
@@ -60,8 +55,7 @@ module.exports = {
                     });
                 }
 
-                // ✔ Usuario correcto
-               // res.send("Login exitoso. ¡Bienvenido!");
+
               return res.redirect("/Menu");
             });
         });
