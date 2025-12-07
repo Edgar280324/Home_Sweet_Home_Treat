@@ -72,7 +72,16 @@ Una vez finalizado en automatico lo redigira al login de acceso e ingrese sus cr
 
     ->Al presionar "Salir", todas las pestañas abiertas se cerrarán y volverá a la pantalla de login.
 
-    
+5. NOTA IMPORTANTE:
+
+Se empleo el SHA2, el cual realiza un encriptado de la contraseña de 64 caracteres. 
+Para consultarlo, dirijase a MYSQL COMAND LINE CLIENT
+
+Coloque lo siguiente:
+
+USE home_sweet_home_treat_bd;
+SELECT * FROM cliente; 
+
     ¡Excelente vacaciones, Inge! La verdad me resultó muy útil trabajar con Express y Node; programar en esta herramienta es mucho más sencillo y rápido que usar WarmServer.
 
 
