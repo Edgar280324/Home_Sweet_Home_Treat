@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/css/Menu.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav id="navbar">
+            <ul class="navbar-items flexbox-col">
+                <!-- Logo -->
+                <li class="navbar-logo flexbox-left">
+                    <a class="navbar-item-inner flexbox">
+                        <img src="/imagenes/logo.png" alt="Logo" class="logo-img">
+                    </a>
+                </li>
+
+                <!-- CLIENTES -->
+                <li class="navbar-item flexbox-left">
+                    <a href="#" class="navbar-item-inner flexbox-left menu-link" onclick="openTab('/clientes')">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Clientes</span>
+                    </a>
+                </li>
+
+                <!-- CATEGORÍAS -->
+                <li class="navbar-item flexbox-left">
+                    <a href="#" class="navbar-item-inner flexbox-left menu-link" onclick="openTab('/categorias')">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                            <ion-icon name="albums-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Categorias</span>
+                    </a>
+                </li>
+
+                <!-- PRODUCTOS -->
+                <li class="navbar-item flexbox-left">
+                    <a href="#" class="navbar-item-inner flexbox-left menu-link" onclick="openTab('/productos')">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                            <ion-icon name="fast-food-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Productos</span>
+                    </a>
+                </li>
+
+                <!-- CARRITO / CREAR CUENTA -->
+                <li class="navbar-item flexbox-left">
+                    <a href="#" class="navbar-item-inner flexbox-left menu-link" onclick="openTab('/carrito')">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Carrito</span>
+                    </a>
+                </li>
+
+                <!-- SALIR -->
+                <li class="navbar-item flexbox-left">
+                    <a href="#" class="navbar-item-inner flexbox-left menu-link" onclick="logout()">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Contenedor principal para todo el contenido del dashboard -->
+    <main id="main-content">
+        <img src="/imagenes/logo.png" alt="Imagen" class="card-image">
+        <div><h4>Bienvenido a</h4></div> 
+        <div><span><h4>Home Sweet Home Treat</h4></span></div>
+    </main>
+
+</div>
+
+<!-- ICONOS IONIC -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+    const openedTabs = [];
+
+    function openTab(url) {
+        const tab = window.open(url, "_blank");
+        openedTabs.push(tab);
+    }
+
+    function logout() {
+        openedTabs.forEach(tab => {
+            if (tab && !tab.closed) tab.close();
+        });
+        window.location.href = "/login";
+    }
+</script>
+
+</body>
+</html>

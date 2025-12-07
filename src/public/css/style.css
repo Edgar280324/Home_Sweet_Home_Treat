@@ -1,0 +1,28 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --bg-image: url(/imagenes/pastel2.jpg); 
+}
+
+:root[data-theme='dark'] {
+    --bg: #121212;
+    --text: #e1e1e1;
+    --bg-image: url(/imagenes/pastel2.jpg); 
+}
+
+
+body {
+    background-color: var(--bg) !important;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text) !important;
+    min-height: 100vh;
+}
+
+
+table {
+    color: var(--text) !important;
+}
+

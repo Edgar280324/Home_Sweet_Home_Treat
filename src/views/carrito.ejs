@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito</title>
+    
+    <!-- Misma estructura del segundo código -->
+    <link rel="preload" href="/css/carritoFondo.css" as="style">
+    <link rel="stylesheet" href="/css/carritoFondo.css">
+
+    <link rel="preload" href="/css/carritoEstructura.css" as="style">
+    <link rel="stylesheet" href="/css/carritoEstructura.css">
+
+    <link rel="stylesheet" href="/css/carritoCliente.css">
+
+    <style>
+        .producto-card {
+            border: 1px solid #9edbec;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .producto-card img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+        }
+
+        #total {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER IGUAL AL SEGUNDO CÓDIGO -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                     <img src="/imagenes/logoCompleto.png" alt="Carrito" class="carrito-img">
+                    <h3>Carrito de Compras</h3>
+                </div>
+
+                <div class="two columns u-pull-right">
+                    <ul>
+                        <li class="submenu">
+
+                            <!-- MISMO CARRITO DEL SEGUNDO CÓDIGO -->
+                            <img src="/imagenes/carrito.png" id="img-carrito" alt="carrito">
+
+                            <div id="carrito">
+                                <table id="lista-carrito" class="u-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <% carrito.forEach(item => { %>
+                                        <tr>
+                                            <td><%= item.nombre_postre %></td>
+                                            <td><%= item.cantidad %></td>
+                                            <td>$<%= item.subtotal %></td>
+                                            <td>
+                                                <a href="/carrito/eliminar/<%= item.carrito_producto_id %>" class="button eliminar-item">
+                                                    X
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+
+                                <p id="total">Total: $<%= total %></p>
+
+                                <a href="/carrito/vaciar" class="button u-full-width" id="vaciar-carrito">
+                                    Comprar productos
+                                </a>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="lista-cursos" class="container">
+
+        <h2 class="encabezado">Productos disponibles</h2>
+
+        <div class="row">
+            <% productos.forEach(p => { %>
+            <div class="four columns">
+                <div class="card producto-card">
+
+                    <img src="/imagenes/<%= p.ruta_imagen %>" class="imagen-curso u-full-width">
+
+                    <div class="info-card">
+                        <h4><%= p.nombre_postre %></h4>
+                        <p>Precio: $<%= p.precio %></p>
+                        <p>Stock: <%= p.stock %></p>
+
+                        <% if(p.stock > 0) { %>
+                            <form action="/carrito/agregar" method="POST">
+                                <input type="hidden" name="postre_id" value="<%= p.postre_id %>">
+                                <input type="number" name="cantidad" min="1" max="<%= p.stock %>" value="1"
+                                       class="u-full-width input">
+                                <button type="submit" class="button-primary button u-full-width">
+                                    Agregar al carrito
+                                </button>
+                            </form>
+                        <% } else { %>
+                            <p style="color:red;">Agotado</p>
+                        <% } %>
+
+                    </div>
+
+                </div>
+            </div>
+            <% }) %>
+        </div>
+
+        <br>
+
+        <a href="/Menu" class="button">
+            Regresar al menú
+        </a>
+
+    </div>
+
+   
+</body>
+
+</html>
